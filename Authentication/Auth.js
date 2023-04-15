@@ -83,6 +83,11 @@ if (!req.body.email || !req.body.password) {
    return res.status(400).send("Sorry User Not Found")
  }
  
+  //Check User Password
+  if(userExist.password !== req.body.password){
+     res.status(409).send("Password Incorrect")
+  }
+ 
   res.status(200).json({msg:"Login Succesfully",userExist })
 
 }catch(error){
