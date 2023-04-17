@@ -3,7 +3,6 @@ const Router = express.Router()
 const mongoose = require("mongoose")
 
 
-
 // Messages Schema
 const msgSchema = new mongoose.Schema({
     msg:String
@@ -50,6 +49,7 @@ Router.get("/messages",async(req,res)=>{
   
  // Send All messages
  try{
+     
     const output = await msgModel.find()
     res.status(200).send(output)
  }catch(error){

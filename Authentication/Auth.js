@@ -14,9 +14,6 @@ const userSchema = new mongoose.Schema({
 // User Model
 const userModel = new mongoose.model("user",userSchema)
 
-userModel.collection.createIndex({ email: 1 }, { unique: true });
-
-
 
 // SignUp Route
 Router.post("/signup", async (req, res) => {
@@ -58,8 +55,6 @@ const user = new userModel({
 
 //Signin Route
 Router.post("/signin",async(req,res)=>{
-
-
 
 
 try{
