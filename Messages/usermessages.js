@@ -4,10 +4,11 @@ const mongoose = require("mongoose")
 
 
 // Messages Schema
-const msgSchema = new mongoose.Schema({
+const msgSchema = new mongoose.Schema({     
     msg:String
 })
 
+ 
 
 // Message Model 
 const msgModel = new mongoose.model("messages",msgSchema)
@@ -31,8 +32,8 @@ Router.post("/msg",async(req,res)=>{
    try{
     
     // Message Save
-    await msg.save()
-    res.status(200).send("Message Save")
+    const output = await msg.save()
+    res.status(200).json({output})
 
    }catch(error){
      console.log(error); 
@@ -59,8 +60,6 @@ Router.get("/messages",async(req,res)=>{
   
 
 })
-
-
 
 
 module.exports = Router

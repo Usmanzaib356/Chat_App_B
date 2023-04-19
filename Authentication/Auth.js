@@ -3,16 +3,20 @@ const Router = express.Router()
 const mongoose = require("mongoose")
 
 
+
 // User Schema 
 const userSchema = new mongoose.Schema({
-  email: String,
-  password: String
-})
+    email: String,
+    password: String
+  })
+  
+  
+  
+  // User Model
+  const userModel = new mongoose.model("user",userSchema)
 
+  
 
-
-// User Model
-const userModel = new mongoose.model("user",userSchema)
 
 
 // SignUp Route
@@ -32,7 +36,12 @@ const user = new userModel({
         return res.status(400).send("Email should be of type string");
       } else if (!req.body.email.includes("@gmail") || !req.body.email.includes(".com")) {
         return res.status(400).send("Invalid email format");
-      }
+      } 
+
+
+  
+      
+
 
 
     // Check if user already exists
@@ -94,3 +103,4 @@ if (!req.body.email || !req.body.password) {
 
 
 module.exports = Router
+
